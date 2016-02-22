@@ -35,6 +35,8 @@ class LibraryAPI: NSObject {
         isOnline = false
         
         super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "downloadImage:", name: "BLDownloadImageNotification", object: nil)
     }
     
     func getAlbums() -> [Album] {
@@ -59,6 +61,35 @@ class LibraryAPI: NSObject {
         if isOnline {
             
             httpClient.postRequest("/api/deleteAlbum", body: "\(index)")
+        }
+    }
+    
+    func downloadImage(notification: NSNotification) {
+        
+        let userInfo = notification.userInfo as! [String: AnyObject]
+        
+        let imageView = userInfo["imageView"] as! UIImageView?
+        
+        let coverURL = userInfo["coverURL"] as! String
+        
+        if let imageViewUnwrapped = imageView {
+            
+            imageViewUnwrapped.image = persistencyManager.getImage(coverURL) //TODO: lastPathComponent
+            
+            if imageViewUnwrapped.image == nil {
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+                    
+                    let downloadedImage = self.httpClient.downloadImage(coverURL)
+                    
+                    dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                        
+                        imageViewUnwrapped.image = downloadedImage
+                        
+                        self.persistencyManager.saveImage(downloadedImage, filename: coverURL)
+                    })
+                })
+            }
         }
     }
 }

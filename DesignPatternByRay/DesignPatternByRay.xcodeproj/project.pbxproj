@@ -19,6 +19,7 @@
 		4CC5E8751C78A3A4001F51AB /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E8741C78A3A4001F51AB /* PersistencyManager.swift */; };
 		4CC5E8771C78B410001F51AB /* AlbumExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E8761C78B410001F51AB /* AlbumExtension.swift */; };
 		4CC5E8791C79FD5A001F51AB /* HorizontalScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5E8781C79FD5A001F51AB /* HorizontalScroller.swift */; };
+		4CC5E87B1C7AC682001F51AB /* 994919_214670392035929_1128515128_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4CC5E87A1C7AC682001F51AB /* 994919_214670392035929_1128515128_n.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		4CC5E8741C78A3A4001F51AB /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		4CC5E8761C78B410001F51AB /* AlbumExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumExtension.swift; sourceTree = "<group>"; };
 		4CC5E8781C79FD5A001F51AB /* HorizontalScroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalScroller.swift; sourceTree = "<group>"; };
+		4CC5E87A1C7AC682001F51AB /* 994919_214670392035929_1128515128_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 994919_214670392035929_1128515128_n.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				4CC5E84C1C789180001F51AB /* AppDelegate.swift */,
 				4CC5E8761C78B410001F51AB /* AlbumExtension.swift */,
 				4CC5E8501C789180001F51AB /* Main.storyboard */,
+				4CC5E87A1C7AC682001F51AB /* 994919_214670392035929_1128515128_n.jpg */,
 				4CC5E8531C789181001F51AB /* Assets.xcassets */,
 				4CC5E8551C789181001F51AB /* LaunchScreen.storyboard */,
 				4CC5E8581C789181001F51AB /* Info.plist */,
@@ -178,6 +181,7 @@
 			files = (
 				4CC5E8571C789181001F51AB /* LaunchScreen.storyboard in Resources */,
 				4CC5E8541C789181001F51AB /* Assets.xcassets in Resources */,
+				4CC5E87B1C7AC682001F51AB /* 994919_214670392035929_1128515128_n.jpg in Resources */,
 				4CC5E8521C789180001F51AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

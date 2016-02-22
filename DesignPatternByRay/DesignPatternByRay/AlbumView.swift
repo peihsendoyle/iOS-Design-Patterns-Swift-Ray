@@ -28,6 +28,13 @@ class AlbumView: UIView {
         super.init(frame: frame)
         
         commonInit()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("BLDownloadImageNotification", object: self, userInfo: ["imageView": coverImage, "coverURL": albumCover])
+    }
+    
+    deinit {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func commonInit() {
