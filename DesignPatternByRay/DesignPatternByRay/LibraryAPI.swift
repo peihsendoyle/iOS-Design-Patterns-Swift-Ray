@@ -39,6 +39,11 @@ class LibraryAPI: NSObject {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "downloadImage:", name: "BLDownloadImageNotification", object: nil)
     }
     
+    func saveAlbums() {
+        
+        persistencyManager.saveAlbums()
+    }
+    
     func getAlbums() -> [Album] {
         
         return persistencyManager.getAlbums()

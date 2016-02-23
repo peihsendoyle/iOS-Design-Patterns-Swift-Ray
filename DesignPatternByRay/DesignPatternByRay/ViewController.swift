@@ -67,6 +67,8 @@ class ViewController: UIViewController {
     func saveCurrentState() {
         
         NSUserDefaults.standardUserDefaults().setInteger(currentAlbumIndex, forKey: "currentAlbumIndex")
+        
+        LibraryAPI.sharedInstance.saveAlbums()
     }
     
     func loadPreviousState() {
