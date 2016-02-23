@@ -30,11 +30,23 @@ class AlbumView: UIView {
         commonInit()
         
         NSNotificationCenter.defaultCenter().postNotificationName("BLDownloadImageNotification", object: self, userInfo: ["imageView": coverImage, "coverURL": albumCover])
+        
+        coverImage.addObserver(self, forKeyPath: "image", options: .Prior, context: nil)
     }
     
     deinit {
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        coverImage.removeObserver(self, forKeyPath: "image")
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if keyPath == "image" {
+            
+            indicator.stopAnimating()
+        }
     }
     
     func commonInit() {
