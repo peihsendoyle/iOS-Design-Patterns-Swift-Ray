@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         
         self.navigationController?.navigationBar.translucent = false
         
-        currentAlbumIndex = 0
+//        currentAlbumIndex = 0
         
         allAlbums = LibraryAPI.sharedInstance.getAlbums()
         
@@ -40,17 +40,40 @@ class ViewController: UIViewController {
         
         view.addSubview(dataTable)
         
-        showDataForAlbum(currentAlbumIndex)
+ //       showDataForAlbum(currentAlbumIndex)
+        
+        loadPreviousState()
         
         scroller.delegate = self
         
         reloadScroller()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveCurrentState", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        
+    }
+    
+    deinit {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Momento Pattern
+    
+    func saveCurrentState() {
+        
+        NSUserDefaults.standardUserDefaults().setInteger(currentAlbumIndex, forKey: "currentAlbumIndex")
+    }
+    
+    func loadPreviousState() {
+        
+        currentAlbumIndex = NSUserDefaults.standardUserDefaults().integerForKey("currentAlbumIndex")
+        
+        showDataForAlbum(currentAlbumIndex)
     }
     
     func showDataForAlbum(albumIndex: Int) {
@@ -76,6 +99,7 @@ class ViewController: UIViewController {
         if currentAlbumIndex < 0 {
             
             currentAlbumIndex = 0
+            
         } else if currentAlbumIndex > allAlbums.count {
             
             currentAlbumIndex = allAlbums.count - 1
@@ -156,6 +180,11 @@ extension ViewController: HorizontalScrollerDelegate {
         }
         
         return albumView
+    }
+    
+    func initialViewIndex(scroller: HorizontalScroller) -> Int {
+        
+        return currentAlbumIndex
     }
 
 }
